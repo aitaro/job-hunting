@@ -22,7 +22,7 @@ export default {
     }
   },
   methods: {
-    signIn: function (){
+    signIn: function () {
       firebase.auth().signInWithEmailAndPassword(this.username, this.password).then(
         user => {
           alert('Success!')
