@@ -19,6 +19,7 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
     <button @click="signOut">Sign out</button>
+    <router-link to="/companies">会社一覧</router-link>
   </div>
 </template>
 

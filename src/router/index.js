@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Signup from '@/components/Signup'
-import Signin from '@/components/Signin'
-import Companies from '@/components/Companies'
+import HelloWorld from '@/pages/HelloWorld'
+import Signup from '@/pages/Signup'
+import Signin from '@/pages/Signin'
+import Companies from '@/pages/Companies'
 import firebase from 'firebase'
 
 Vue.use(Router)
