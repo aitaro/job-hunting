@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Signup from '@/components/Signup'
 import Signin from '@/components/Signin'
+import Companies from '@/components/Companies'
 import firebase from 'firebase'
 
 Vue.use(Router)
@@ -28,6 +29,11 @@ let router = new Router({
       path: '/signin',
       name: 'Signin',
       component: Signin
+    },
+    {
+      path: '/companies',
+      name: 'Companies',
+      component: Companies
     }
   ]
 })
