@@ -4,7 +4,8 @@ import HelloWorld from '@/pages/HelloWorld'
 import Signup from '@/pages/Signup'
 import Signin from '@/pages/Signin'
 import Companies from '@/pages/Companies'
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
 Vue.use(Router)
 
