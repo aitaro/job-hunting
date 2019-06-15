@@ -1,7 +1,7 @@
 <template>
   <div class="signup">
     <h2>Sign up</h2>
-    <input type="text" placeholder="Username" v-model="username">
+    <input type="text" placeholder="Email" v-model="email">
     <input type="password" placeholder="Password" v-model="password">
     <button @click="signUp">Register</button>
     <p>Do you have an account?
@@ -13,19 +13,29 @@
 <script>
 import firebase from 'firebase/app'
 import 'firebase/auth'
+import 'firebase/firestore'
 
 export default {
   name: 'Signup',
   data () {
     return {
-      username: '',
+      email: '',
       password: ''
     }
   },
   methods: {
+    writeUserData: function (userId, email) {
+      this.database = firebase.firestore()
+      this.database.collection('users').doc(userId).set({
+        email: email,
+      });
+    },
     signUp: function () {
-      firebase.auth().createUserWithEmailAndPassword(this.username, this.password)
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
         .then(user => {
+          var user = firebase.auth().currentUser;
+          this.writeUserData(user.uid, user.email)
+          // console.log(user.uid)
           alert('Create account: ', user.email)
         })
         .catch(error => {
