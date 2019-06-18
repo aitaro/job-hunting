@@ -2,7 +2,7 @@
   <div class="hoge">
     <!-- Side navigation -->
     <div class="sidenav">
-      <a href="#" v-for="company in companies">{{company.name}}</a>
+      <a href="#" v-for="company in companies" :key='company'>{{company.name}}</a>
     </div>
 
     <!-- Page content -->
@@ -44,8 +44,6 @@ export default {
   created: function () {
     this.database = firebase.firestore()
     const el = []
-    this.database.collection('Companies').get()
-    .then()
     this.database.collection('Companies').get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
         // doc.data() is never undefined for query doc snapshots
@@ -56,7 +54,6 @@ export default {
       })
     })
     this.companies = el
-
   },
   components: {
     Company

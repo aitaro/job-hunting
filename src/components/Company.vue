@@ -14,7 +14,6 @@
 <script>
 import firebase from 'firebase/app'
 import 'firebase/firestore'
-import 'firebase/firestore'
 export default {
   props: ['company_id'],
   data: () => {
@@ -42,15 +41,15 @@ export default {
       var docData = {
         mypage_id: this.mypage_id
       }
-      this.database.collection("Entries").doc(this.entry_id).update(docData).then((doc) => {
-          console.log("Document successfully written!");
-      });
+      this.database.collection('Entries').doc(this.entry_id).update(docData).then((doc) => {
+        console.log('Document successfully written!')
+      })
     },
     getEntry: function () {
-      this.database.collection("Entries").get().then((querySnapshot) => {
+      this.database.collection('Entries').get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           console.log(doc.data().company_id)
-          if(doc.data().company_id == this.company_id && doc.data().user_id == firebase.auth().currentUser.uid){
+          if (doc.data().company_id === this.company_id && doc.data().user_id === firebase.auth().currentUser.uid) {
             console.log(doc.id)
             this.entry_id = doc.id
             this.mypage_id = doc.data().mypage_id

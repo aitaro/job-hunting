@@ -27,13 +27,13 @@ export default {
     writeUserData: function (userId, email) {
       this.database = firebase.firestore()
       this.database.collection('Users').doc(userId).set({
-        email: email,
-      });
+        email: email
+      })
     },
     signUp: function () {
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
         .then(user => {
-          var user = firebase.auth().currentUser;
+          // var user = firebase.auth().currentUser;
           this.writeUserData(user.uid, user.email)
           // console.log(user.uid)
           alert('Create account: ', user.email)
