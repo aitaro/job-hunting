@@ -2,15 +2,12 @@
   <div class="hoge">
     <!-- Side navigation -->
     <div class="sidenav">
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Clients</a>
-      <a href="#">Contact</a>
+      <a href="#" v-for="company in companies">{{company.name}}</a>
     </div>
 
     <!-- Page content -->
     <div class="main">
-      <Company  name="日本ロレアル！" />
+      <Company  company_id="YxmqCBauOEb4WsiZoYiM" />
     </div>
   </div>
   <!-- <div class="companies">
@@ -41,13 +38,14 @@ import 'firebase/firestore'
 export default {
   data: () => {
     return {
-      elements: []
+      companies: []
     }
   },
   created: function () {
     this.database = firebase.firestore()
-    console.log(this.database.collection('Companies'))
     const el = []
+    this.database.collection('Companies').get()
+    .then()
     this.database.collection('Companies').get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
         // doc.data() is never undefined for query doc snapshots
@@ -57,7 +55,8 @@ export default {
         console.log(doc.id, ' => ', doc.data())
       })
     })
-    this.elements = el
+    this.companies = el
+
   },
   components: {
     Company
@@ -69,7 +68,7 @@ export default {
   /* The sidebar menu */
   .sidenav {
     height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 160px; /* Set the width of the sidebar */
+    width: 240px; /* Set the width of the sidebar */
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
@@ -95,7 +94,7 @@ export default {
 
   /* Style page content */
   .main {
-    margin-left: 160px; /* Same as the width of the sidebar */
+    margin-left: 240px; /* Same as the width of the sidebar */
     padding: 0px 10px;
   }
 

@@ -26,7 +26,7 @@ export default {
   methods: {
     writeUserData: function (userId, email) {
       this.database = firebase.firestore()
-      this.database.collection('users').doc(userId).set({
+      this.database.collection('Users').doc(userId).set({
         email: email,
       });
     },
